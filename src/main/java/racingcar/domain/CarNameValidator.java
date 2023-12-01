@@ -8,6 +8,12 @@ public class CarNameValidator {
     private static final int MIN_NAME_LENGTH = 1;
     private static final int MAX_NAME_LENGTH = 5;
 
+    public void validateNameCount(List<String> carNames) {
+        if (carNames.size() < 2) {
+            throw new IllegalArgumentException("[ERROR] 2대 이상 입력되어야 레이싱 경주가 가능합니다");
+        }
+    }
+
     public void validateNameLength(List<String> carNames) {
         for (String name : carNames) {
             if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
