@@ -11,7 +11,7 @@ public class TryCountValidator {
         }
     }
 
-    public static void validateTryCount(int count) {
+    public static void validateMinTryCount(int count) {
         if (count < MINIMUM_ATTEMPTS) {
             throw new IllegalArgumentException("[ERROR] 1이상 입력되어야 레이싱 경주가 가능합니다.");
         }
