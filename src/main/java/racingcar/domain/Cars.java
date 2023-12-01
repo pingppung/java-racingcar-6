@@ -8,7 +8,7 @@ public class Cars {
     private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 0;
     private final List<Car> cars;
-    private final int tryCount;
+    private int tryCount;
 
     public Cars(RacingGameInfo racingGameInfo) {
         this.cars = new ArrayList<>();
@@ -28,7 +28,13 @@ public class Cars {
         CarNameValidator.validateNameDuplicate(carNames);
     }
 
-    public void moveCarForward() {
+    public void tryMovingCars() {
+        while (tryCount-- > 0) {
+            moveCarForward();
+        }
+    }
+
+    private void moveCarForward() {
         for (Car car : cars) {
             int randomNumber = RandomNumberGenerator.generate();
             if (randomNumber >= MOVE_CONDITION) {
