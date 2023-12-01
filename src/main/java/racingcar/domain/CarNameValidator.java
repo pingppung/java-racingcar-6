@@ -14,11 +14,9 @@ public class CarNameValidator {
         }
     }
 
-    public static void validateNameLength(List<String> carNames) {
-        for (String name : carNames) {
-            if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
-                throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
-            }
+    public static void validateNameLength(String name) {
+        if (name.length() < MIN_NAME_LENGTH || name.length() > MAX_NAME_LENGTH) {
+            throw new IllegalArgumentException("[ERROR] 자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
         }
     }
 
