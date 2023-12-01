@@ -23,4 +23,29 @@ public class CarNameValidatorTest {
         List<String> multipleCarNames = List.of("Car1", "Car2");
         CarNameValidator.validateNameCount(multipleCarNames);
     }
+
+    @DisplayName("자동차 이름이 1자 미만일 경우 예외 발생")
+    @Test
+    void invalidateNameLength_lessThanMinimumLength() {
+        String name = "";
+        assertThatThrownBy(() -> CarNameValidator.validateNameLength(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
+    }
+
+    @DisplayName("자동차 이름이 5자 초과일 경우 예외 발생")
+    @Test
+    void invalidateNameLength_greaterThanMaximumLength() {
+        String name = "123456";
+        assertThatThrownBy(() -> CarNameValidator.validateNameLength(name))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 자동차 이름은 1자 이상, 5자 이하만 가능합니다.");
+    }
+
+    @DisplayName("자동차 이름이 1자 이상 5자 이하인 경우 정상")
+    @Test
+    void validateNameLengthInRange() {
+        String name = "Car";
+        CarNameValidator.validateNameLength(name);
+    }
 }
