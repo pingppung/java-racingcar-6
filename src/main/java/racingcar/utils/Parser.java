@@ -6,7 +6,7 @@ import java.util.List;
 public class Parser {
     private static final String SEPARATOR = ",";
 
-    public List<String> parseCarNames(String input) {
+    public static List<String> parseCarNames(String input) {
         return Arrays.stream(input.split(SEPARATOR))
                 .map(String::trim)
                 .toList();
