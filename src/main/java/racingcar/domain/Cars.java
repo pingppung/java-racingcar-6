@@ -8,9 +8,12 @@ public class Cars {
     private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 0;
     private final List<Car> cars;
+    private final int tryCount;
 
-    public Cars() {
+    public Cars(RacingGameInfo racingGameInfo) {
         this.cars = new ArrayList<>();
+        this.addCar(racingGameInfo.carNames());
+        this.tryCount = racingGameInfo.tryCount();
     }
 
     public void addCar(List<String> carNames) {

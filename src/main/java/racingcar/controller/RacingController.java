@@ -1,5 +1,8 @@
 package racingcar.controller;
 
+import java.util.List;
+import racingcar.domain.Cars;
+import racingcar.domain.RacingGameInfo;
 import racingcar.view.InputView;
 
 public class RacingController {
@@ -10,8 +13,11 @@ public class RacingController {
     }
 
     public void startRace() {
-        inputView.getCarNames();
-        inputView.getTryCount();
+        List<String> carNames = inputView.getCarNames();
+        int tryCount = inputView.getTryCount();
+        RacingGameInfo racingGameInfo = new RacingGameInfo(carNames, tryCount);
+        Cars cars = new Cars(racingGameInfo);
+
 
     }
 }
