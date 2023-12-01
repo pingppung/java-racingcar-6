@@ -12,8 +12,16 @@ public class Cars {
         this.cars = new ArrayList<>();
     }
 
-    public void addCar(String name) {
-        cars.add(new Car(name, INIT_POSITION));
+    public void addCar(List<String> carNames) {
+        validate(carNames);
+        for (String name : carNames) {
+            cars.add(new Car(name, INIT_POSITION));
+        }
+    }
+
+    private void validate(List<String> carNames) {
+        CarNameValidator.validateNameCount(carNames);
+        CarNameValidator.validateNameDuplicate(carNames);
     }
 
     public void moveCarForward() {
