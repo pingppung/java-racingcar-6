@@ -5,11 +5,16 @@ public class Car {
     private int position;
 
     public Car(String name, int position) {
+        validate(name);
         this.name = name;
         this.position = position;
     }
 
+    private void validate(String carName) {
+        CarNameValidator.validateNameLength(carName);
+    }
+
     public void moveForward() {
-        position++;
+        this.position++;
     }
 }
