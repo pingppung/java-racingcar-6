@@ -2,6 +2,7 @@ package racingcar.view;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.List;
+import racingcar.domain.validator.TryCountValidator;
 import racingcar.utils.Parser;
 
 public class InputView {
@@ -12,8 +13,11 @@ public class InputView {
         return Parser.parseCarNames(inputWithPrompt(INPUT_CARS_PROMPT));
     }
 
-    public String getTryCount() {
-        return inputWithPrompt(INPUT_TRY_PROMPT);
+    public int getTryCount() {
+        String input = inputWithPrompt(INPUT_TRY_PROMPT);
+        int count = TryCountValidator.validateNonNumberic(input);
+        TryCountValidator.validateMinTryCount(count);
+        return count;
     }
 
     private String inputWithPrompt(String prompt) {
