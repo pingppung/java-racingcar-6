@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.validator.CarNameValidator;
 
 public class Cars {
     private static final int MOVE_CONDITION = 4;

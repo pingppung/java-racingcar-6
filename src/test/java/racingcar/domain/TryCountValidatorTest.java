@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.validator.TryCountValidator;
 
 public class TryCountValidatorTest {
     @DisplayName("숫자가 아닌 값을 입력했을 경우 예외 발생")

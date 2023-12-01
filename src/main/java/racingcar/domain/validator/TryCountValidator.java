@@ -1,4 +1,4 @@
-package racingcar.domain;
+package racingcar.domain.validator;
 
 public class TryCountValidator {
     private static final int MINIMUM_ATTEMPTS = 1;
