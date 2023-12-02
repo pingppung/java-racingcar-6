@@ -13,11 +13,26 @@ public class RacingController {
     }
 
     public void startRace() {
+        RacingGameInfo racingGameInfo = getRacingGameInfoFromInput();
+        Cars cars = createCarsForRace(racingGameInfo);
+        cars.tryMovingCars();
+    }
+
+    private RacingGameInfo getRacingGameInfoFromInput() {
         List<String> carNames = inputView.getCarNames();
         int tryCount = inputView.getTryCount();
-        RacingGameInfo racingGameInfo = new RacingGameInfo(carNames, tryCount);
-        Cars cars = new Cars(racingGameInfo);
+        return new RacingGameInfo(carNames, tryCount);
+    }
 
+    private Cars createCarsForRace(RacingGameInfo racingGameInfo) {
+        return new Cars(racingGameInfo);
+    }
 
+    private void moveCars(Cars cars) {
+        cars.tryMovingCars();
+    }
+
+    private void displayResults(Cars cars) {
+        cars.getCars();
     }
 }

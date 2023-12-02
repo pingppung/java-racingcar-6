@@ -16,7 +16,7 @@ public class Cars {
         this.tryCount = racingGameInfo.tryCount();
     }
 
-    public void addCar(List<String> carNames) {
+    private void addCar(List<String> carNames) {
         validate(carNames);
         for (String name : carNames) {
             cars.add(new Car(name, INIT_POSITION));
@@ -40,6 +40,12 @@ public class Cars {
             if (randomNumber >= MOVE_CONDITION) {
                 car.moveForward();
             }
+        }
+    }
+
+    public void getCars() {
+        for (Car car : cars) {
+            System.out.println("Name: " + car.getName() + ", Position: " + car.getPosition());
         }
     }
 }
