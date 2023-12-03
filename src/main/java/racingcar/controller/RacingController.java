@@ -5,6 +5,7 @@ import java.util.Map;
 import racingcar.domain.Cars;
 import racingcar.domain.RacingGameInfo;
 import racingcar.view.InputView;
+import racingcar.view.OutputView;
 
 public class RacingController {
     private final InputView inputView;
@@ -30,9 +31,15 @@ public class RacingController {
     }
 
     private void moveCars(Cars cars, int gameRound) {
+        OutputView.printExecutionResult();
+        moveCarsForRounds(cars, gameRound);
+    }
+
+    private void moveCarsForRounds(Cars cars, int gameRound) {
         while (gameRound-- > 0) {
             cars.moveCarForward();
             Map<String, Integer> gameSituation = cars.getCars();
+            OutputView.printRaceRoundResults(gameSituation);
         }
     }
 
