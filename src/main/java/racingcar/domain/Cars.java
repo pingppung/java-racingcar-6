@@ -37,6 +37,22 @@ public class Cars {
         }
     }
 
+    private int getMaxMoveCount() {
+        return cars.stream()
+                .mapToInt(Car::getPosition)
+                .max()
+                .orElse(0);
+    }
+
+    public List<String> findWinners() {
+        int maxMoveCount = getMaxMoveCount();
+
+        return cars.stream()
+                .filter(car -> car.getPosition() == maxMoveCount)
+                .map(Car::getName)
+                .toList();
+    }
+
     public Map<String, Integer> getCars() {
         Map<String, Integer> gameSituation = new HashMap<>();
         for (Car car : cars) {

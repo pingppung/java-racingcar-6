@@ -42,8 +42,4 @@ public class RacingController {
             OutputView.printRaceRoundResults(gameSituation);
         }
     }
-
-    private void displayResults(Cars cars) {
-        cars.getCars();
-    }
 }
