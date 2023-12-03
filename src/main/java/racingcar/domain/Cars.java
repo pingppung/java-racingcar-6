@@ -1,19 +1,19 @@
 package racingcar.domain;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import racingcar.domain.validator.CarNameValidator;
 
 public class Cars {
     private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 0;
     private final List<Car> cars;
-    private int tryCount;
 
     public Cars(RacingGameInfo racingGameInfo) {
         this.cars = new ArrayList<>();
         this.addCar(racingGameInfo.carNames());
-        this.tryCount = racingGameInfo.tryCount();
     }
 
     private void addCar(List<String> carNames) {
@@ -28,13 +28,7 @@ public class Cars {
         CarNameValidator.validateNameDuplicate(carNames);
     }
 
-    public void tryMovingCars() {
-        while (tryCount-- > 0) {
-            moveCarForward();
-        }
-    }
-
-    private void moveCarForward() {
+    public void moveCarForward() {
         for (Car car : cars) {
             int randomNumber = RandomNumberGenerator.generate();
             if (randomNumber >= MOVE_CONDITION) {
@@ -43,9 +37,11 @@ public class Cars {
         }
     }
 
-    public void getCars() {
+    public Map<String, Integer> getCars() {
+        Map<String, Integer> gameSituation = new HashMap<>();
         for (Car car : cars) {
-            System.out.println("Name: " + car.getName() + ", Position: " + car.getPosition());
+            gameSituation.put(car.getName(), car.getPosition());
         }
+        return gameSituation;
     }
 }
