@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import java.util.List;
 import java.util.Map;
 
 public class OutputView {
@@ -19,7 +20,10 @@ public class OutputView {
         }
     }
 
-    public static void printFinalWinner(String result) {
-        System.out.println(FINAL_WINNER + result);
+    public static void printFinalWinner(List<String> winners) {
+        System.out.print(FINAL_WINNER);
+        for (String winner : winners) {
+            System.out.print(winner + " ");
+        }
     }
 }

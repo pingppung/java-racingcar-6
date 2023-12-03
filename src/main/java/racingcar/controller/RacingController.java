@@ -18,6 +18,7 @@ public class RacingController {
         RacingGameInfo racingGameInfo = getRacingGameInfoFromInput();
         Cars cars = createCarsForRace(racingGameInfo);
         moveCars(cars, racingGameInfo.gameRound());
+        determineWinner(cars);
     }
 
     private RacingGameInfo getRacingGameInfoFromInput() {
@@ -41,5 +42,10 @@ public class RacingController {
             Map<String, Integer> gameSituation = cars.getCars();
             OutputView.printRaceRoundResults(gameSituation);
         }
+    }
+
+    private void determineWinner(Cars cars) {
+        List<String> winners = cars.findWinners();
+        OutputView.printFinalWinner(winners);
     }
 }
