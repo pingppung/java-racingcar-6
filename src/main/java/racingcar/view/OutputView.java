@@ -9,6 +9,7 @@ public class OutputView {
     private static final String POSITION_CHARARCTER = "-";
 
     public static void printExecutionResult() {
+        System.out.println();
         System.out.println(EXECUTION_RESULT);
     }
 
@@ -18,12 +19,12 @@ public class OutputView {
             int position = entry.getValue();
             System.out.println(carName + " : " + POSITION_CHARARCTER.repeat(position));
         }
+        System.out.println();
     }
 
     public static void printFinalWinner(List<String> winners) {
         System.out.print(FINAL_WINNER);
-        for (String winner : winners) {
-            System.out.print(winner + " ");
-        }
+        String result = String.join(", ", winners);
+        System.out.println(result);
     }
 }
