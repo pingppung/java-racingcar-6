@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import racingcar.domain.constant.ErrorMessage;
 import racingcar.domain.validator.TryCountValidator;
 
 public class TryCountValidatorTest {
@@ -13,7 +14,7 @@ public class TryCountValidatorTest {
         String name = "a";
         assertThatThrownBy(() -> TryCountValidator.validateNonNumberic(name))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 숫자만 입력해주셔야 합니다.");
+                .hasMessage(ErrorMessage.NON_NUMERIC_INPUT.getMessage());
     }
 
     @DisplayName("숫자를 입력했을 경우 정상")
@@ -29,7 +30,7 @@ public class TryCountValidatorTest {
         int count = 0;
         assertThatThrownBy(() -> TryCountValidator.validateMinTryCount(count))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 1이상 입력되어야 레이싱 경주가 가능합니다.");
+                .hasMessage(ErrorMessage.MIN_ATTEMPTS.getMessage());
     }
 
     @DisplayName("최소 시도 횟수인 1이상의 값을 입력했을 경우")

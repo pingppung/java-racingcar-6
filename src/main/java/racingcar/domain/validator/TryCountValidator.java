@@ -1,5 +1,7 @@
 package racingcar.domain.validator;
 
+import racingcar.domain.constant.ErrorMessage;
+
 public class TryCountValidator {
     private static final int MINIMUM_ATTEMPTS = 1;
 
@@ -7,13 +9,13 @@ public class TryCountValidator {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("[ERROR] 숫자만 입력해주셔야 합니다.");
+            throw new IllegalArgumentException(ErrorMessage.NON_NUMERIC_INPUT.getMessage());
         }
     }
 
     public static void validateMinTryCount(int count) {
         if (count < MINIMUM_ATTEMPTS) {
-            throw new IllegalArgumentException("[ERROR] 1이상 입력되어야 레이싱 경주가 가능합니다.");
+            throw new IllegalArgumentException(ErrorMessage.MIN_ATTEMPTS.getMessage());
         }
     }
 }
