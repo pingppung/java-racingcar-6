@@ -41,6 +41,26 @@ public class RacingGameTest extends NsTest {
         );
     }
 
+    @DisplayName("단독_우승자_확인")
+    @Test
+    void checkSingleWinner() {
+        cars.cars = List.of(new Car("a", 3),
+                new Car("b", 2),
+                new Car("c", 1));
+        List<String> winners = cars.findWinners();
+        assertThat(winners).isEqualTo(List.of("a"));
+    }
+
+    @DisplayName("공동_우승자_확인")
+    @Test
+    void checkMultipleWinner() {
+        cars.cars = List.of(new Car("a", 3),
+                new Car("b", 3),
+                new Car("c", 1));
+        List<String> winners = cars.findWinners();
+        assertThat(winners).isEqualTo(List.of("a", "b"));
+    }
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});

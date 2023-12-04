@@ -9,18 +9,22 @@ import racingcar.domain.validator.CarNameValidator;
 public class Cars {
     private static final int MOVE_CONDITION = 4;
     private static final int INIT_POSITION = 0;
-    private final List<Car> cars;
+    protected List<Car> cars;
 
     public Cars(RacingGameInfo racingGameInfo) {
         this.cars = new ArrayList<>();
-        this.addCar(racingGameInfo.carNames(), INIT_POSITION);
+        this.registerCars(racingGameInfo.carNames());
     }
 
-    private void addCar(List<String> carNames, int position) {
+    public void registerCars(List<String> carNames) {
         validate(carNames);
         for (String name : carNames) {
-            cars.add(new Car(name, position));
+            cars.add(addCar(name, INIT_POSITION));
         }
+    }
+
+    private Car addCar(String carName, int position) {
+        return new Car(carName, position);
     }
 
     private void validate(List<String> carNames) {
