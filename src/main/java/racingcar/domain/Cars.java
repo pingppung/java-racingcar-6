@@ -13,13 +13,13 @@ public class Cars {
 
     public Cars(RacingGameInfo racingGameInfo) {
         this.cars = new ArrayList<>();
-        this.addCar(racingGameInfo.carNames());
+        this.addCar(racingGameInfo.carNames(), INIT_POSITION);
     }
 
-    private void addCar(List<String> carNames) {
+    private void addCar(List<String> carNames, int position) {
         validate(carNames);
         for (String name : carNames) {
-            cars.add(new Car(name, INIT_POSITION));
+            cars.add(new Car(name, position));
         }
     }
 
