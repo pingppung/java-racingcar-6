@@ -9,9 +9,11 @@ import racingcar.view.OutputView;
 
 public class RacingController {
     private final InputView inputView;
+    private final OutputView outputView;
 
-    public RacingController(InputView inputView) {
+    public RacingController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
+        this.outputView = outputView;
     }
 
     public void startRace() {
@@ -32,7 +34,7 @@ public class RacingController {
     }
 
     private void moveCars(Cars cars, int gameRound) {
-        OutputView.printExecutionResult();
+        outputView.printExecutionResult();
         moveCarsForRounds(cars, gameRound);
     }
 
@@ -40,12 +42,12 @@ public class RacingController {
         while (gameRound-- > 0) {
             cars.moveCarForward();
             Map<String, Integer> gameSituation = cars.getCars();
-            OutputView.printRaceRoundResults(gameSituation);
+            outputView.printRaceRoundResults(gameSituation);
         }
     }
 
     private void determineWinner(Cars cars) {
         List<String> winners = cars.findWinners();
-        OutputView.printFinalWinner(winners);
+        outputView.printFinalWinner(winners);
     }
 }
